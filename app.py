@@ -23,7 +23,8 @@ def upload():
             continue
 
         pdf = fitz.open(stream=file.read(), filetype="pdf")
-        text = "".join([page.get_text() for page in pdf])
+        text = " ".join([page.get_text().replace('\n', ' ') for page in pdf])
+
 
         # Extract move pairs like "1. e4 e5"
         move_pairs = re.findall(r'\d+\.\s*\S+(?:\s+\S+)?', text)
