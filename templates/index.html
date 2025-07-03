@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chess PDF to Excel Converter</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <img
+        src="https://res.cloudinary.com/dy6va4nas/image/upload/v1751529861/Black_and_White_Minimalist_Professional_Initial_Logo_1_ntr5wh.png"
+        class="logo-image"
+    />
+    <h1 class="main-head">Convert Chess PDFs to Excel</h1>
+  <div class="container">
+    <h1 class="sub-head">Choose upto 10 Files at a Time</h1>
+    <form class="form-cont" action="/upload" method="post" enctype="multipart/form-data">
+      <div>
+        <!-- Styled label triggers hidden file input -->
+        <label for="fileUpload" class="file-label">Choose PDF Files</label>
+        <input type="file" id="fileUpload" name="files" accept="application/pdf" multiple required>
+        <div id="fileNames">No files selected</div>
+      </div>
+      <button type="submit">Upload & Convert</button>
+    </form>
+  </div>
+
+  <!-- JS goes inside body (not head) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const input = document.getElementById('fileUpload');
+      const output = document.getElementById('fileNames');
+
+      input.addEventListener('change', function () {
+        if (input.files.length > 0) {
+          const names = Array.from(input.files).map(f => f.name).join(', ');
+          output.textContent = names;
+        } else {
+          output.textContent = 'No files selected';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

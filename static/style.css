@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  background-image: linear-gradient(to right, #191919, #292929);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 50%;
+  width: 50%;
+  position: relative;
+}   
+button {
+  background-color: #9d32d7;
+  color: white;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  justify-self: flex-end;;
+}
+button:hover {
+  background-color: #551b74;
+}
+.main-head{
+    color: #9d32d7;
+    font-size: 40px;
+}
+input[type="file"] {
+  display: none;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
+  background-color: #166027;
+}
+
+#fileNames {
+  margin: 10px 0;
+  color: #777;
+  font-style: italic;
+  font-size: 14px;
+}
+.logo-image{
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.sub-head{
+    color: white;
+    position: absolute;
+    top: 10px;
+    font-size: 26px;
+}
