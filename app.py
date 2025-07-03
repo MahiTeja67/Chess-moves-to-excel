@@ -41,5 +41,9 @@ def upload():
 
     return send_file(temp_file.name, as_attachment=True, download_name="chess_games.xlsx")
 
+import os
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, host="0.0.0.0", port=port)
+
