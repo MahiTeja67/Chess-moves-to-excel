@@ -77,3 +77,7 @@ input[type="file"] {
     top: 10px;
     font-size: 26px;
 }
+.label-head{
+  color: white;
+  font-size: 16px;
+}
