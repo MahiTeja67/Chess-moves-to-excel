@@ -13,6 +13,8 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload():
     files = request.files.getlist('files')
+    layout = request.form.get('layout')  # <-- NEW
+
     if not files or len(files) > 10:
         return "Upload up to 10 PDF files only.", 400
 
@@ -25,22 +27,25 @@ def upload():
         pdf = fitz.open(stream=file.read(), filetype="pdf")
         text = " ".join([page.get_text().replace('\n', ' ') for page in pdf])
 
-
-        # Extract move pairs like "1. e4 e5"
         move_pairs = re.findall(r'\d+\.\s*\S+(?:\s+\S+)?', text)
         all_games.append(move_pairs)
 
-    # Pad each game row to the same length
+    # Pad games to equal length
     max_len = max(len(game) for game in all_games)
     for game in all_games:
         game += [''] * (max_len - len(game))
 
-    # Convert to DataFrame and save to Excel
     df = pd.DataFrame(all_games)
+
+    if layout == 'vertical':
+        df = df.transpose()  # Flip rows/columns
+
+    # Write to Excel
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.xlsx')
     df.to_excel(temp_file.name, index=False, header=False)
 
     return send_file(temp_file.name, as_attachment=True, download_name="chess_games.xlsx")
+
 
 import os
 

@@ -12,15 +12,22 @@
     <h1 class="main-head">Convert Chess PDFs to Excel</h1>
   <div class="container">
     <h1 class="sub-head">Choose upto 10 Files at a Time</h1>
-    <form class="form-cont" action="/upload" method="post" enctype="multipart/form-data">
-      <div>
-        <!-- Styled label triggers hidden file input -->
-        <label for="fileUpload" class="file-label">Choose PDF Files</label>
-        <input type="file" id="fileUpload" name="files" accept="application/pdf" multiple required>
-        <div id="fileNames">No files selected</div>
-      </div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="fileUpload" class="file-label">Choose PDF Files</label>
+      <input type="file" id="fileUpload" name="files" accept="application/pdf" multiple required>
+
+      <div id="fileNames">No files selected</div>
+
+      <br><br>
+      <label for="layoutOption">Select Excel Layout:</label>
+      <select id="layoutOption" name="layout" required>
+        <option value="horizontal">Each move in a column (1 row per game)</option>
+        <option value="vertical">Each move in a row (1 column per game)</option>
+      </select>
+
+      <br><br>
       <button type="submit">Upload & Convert</button>
-    </form>
+</form>
   </div>
 
   <!-- JS goes inside body (not head) -->
